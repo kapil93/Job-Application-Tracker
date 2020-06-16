@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kapil.presentation">
+
+    <application android:theme="@style/AppTheme">
+        <activity
+            android:name=".jobs.addoredit.AddOrEditJobActivity"
+            android:windowSoftInputMode="stateUnchanged|adjustResize" />
+        <activity
+            android:name=".home.HomeActivity"
+            android:windowSoftInputMode="adjustPan" />
+    </application>
+
+</manifest>

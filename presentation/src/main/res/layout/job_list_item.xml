@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_xl"
+        android:layout_marginTop="@dimen/margin_xl"
+        android:layout_marginEnd="@dimen/margin_xl"
+        android:textSize="@dimen/text_xl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Software Engineer" />
+
+    <TextView
+        android:id="@+id/company"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_xl"
+        android:layout_marginEnd="@dimen/margin_xl"
+        android:textSize="@dimen/text_l"
+        app:layout_constraintEnd_toStartOf="@id/labelPriority"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        tools:text="Google" />
+
+    <TextView
+        android:id="@+id/priority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_xl"
+        android:textSize="@dimen/text_l"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        tools:text="Very High" />
+
+    <TextView
+        android:id="@+id/labelPriority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_s"
+        android:labelFor="@+id/priority"
+        android:text="@string/label_priority"
+        android:textSize="@dimen/text_l"
+        app:layout_constraintEnd_toStartOf="@+id/priority"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_xl"
+        android:layout_marginEnd="@dimen/margin_xl"
+        android:textSize="@dimen/text_m"
+        app:layout_constraintEnd_toStartOf="@id/labelPriority"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/company"
+        tools:text="Berlin, Kreuzberg" />
+
+    <TextView
+        android:id="@+id/contact"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_xl"
+        android:layout_marginTop="@dimen/margin_xl"
+        android:layout_marginEnd="@dimen/margin_xl"
+        android:textSize="@dimen/text_l"
+        app:layout_constraintEnd_toStartOf="@+id/labelStatus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/location"
+        tools:text="Sundar Pichai" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_xl"
+        android:layout_marginEnd="@dimen/margin_xl"
+        android:textSize="@dimen/text_l"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/location"
+        tools:text="In Process" />
+
+    <TextView
+        android:id="@+id/labelStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_xl"
+        android:layout_marginEnd="@dimen/margin_s"
+        android:labelFor="@+id/status"
+        android:text="@string/label_status"
+        android:textSize="@dimen/text_l"
+        app:layout_constraintEnd_toStartOf="@+id/status"
+        app:layout_constraintTop_toBottomOf="@+id/location" />
+
+    <include
+        layout="@layout/divider_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_xl"
+        android:layout_marginTop="@dimen/margin_xl"
+        android:layout_marginEnd="@dimen/margin_xl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contact" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

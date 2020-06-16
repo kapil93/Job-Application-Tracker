@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_add_job_screen">Create Job</string>
+    <string name="label_edit_job_screen">Edit Job</string>
+    <string name="label_jobs_screen">Jobs</string>
+    <string name="label_events_screen">Events</string>
+    <string name="label_offers_screen">Offers</string>
+
+    <string name="label_role">Role</string>
+    <string name="label_company_name">Company Name</string>
+    <string name="label_company_website">Company Website</string>
+    <string name="label_company_notes">Notes about the company</string>
+    <string name="label_company_address">Company Address</string>
+    <string name="label_contact_name">Contact Name</string>
+    <string name="label_contact_email">Contact E-Mail</string>
+    <string name="label_contact_phone">Contact Phone Number</string>
+    <string name="label_applied_through">Applied Through</string>
+    <string name="label_job_notes">Notes about the job</string>
+    <string name="label_priority">Priority</string>
+    <string name="label_status">Status</string>
+    <string name="label_doj">DOJ:</string>
+    <string name="label_required">Required</string>
+    <string name="label_event_list">Events</string>
+    <string name="label_offer_input_section">Offer Details</string>
+    <string name="label_company_details_section">Company Details</string>
+    <string name="label_contact_details_section">Contact Details</string>
+    <string name="label_offer_amount">Amount</string>
+    <string name="label_offer_doj">Date of joining</string>
+    <string name="label_offer_notes">Notes about the offer</string>
+    <string name="label_event_input_section">New Event</string>
+    <string name="label_event_title">Title</string>
+    <string name="label_event_start_datetime">Start date time</string>
+    <string name="label_event_end_datetime">End date time</string>
+    <string name="label_event_notes">Notes about the event</string>
+    <string name="label_sort_doj">DOJ</string>
+    <string name="label_sort_amount">Amount</string>
+    <string name="label_group_by_job">Group by Job</string>
+    <string name="label_sort_date">Date</string>
+    <string name="label_filter">Filter</string>
+    <string name="label_filter_role_keyword">Role keyword</string>
+    <string name="label_filter_company_keyword">Company Name keyword</string>
+    <string name="label_filter_company">Filter by company name</string>
+    <string name="label_filter_role">Filter by role</string>
+
+    <string name="btn_text_retry">Retry</string>
+    <string name="btn_text_add_event">Save Event</string>
+    <string name="btn_text_apply">Apply</string>
+    <string name="btn_text_undo">UNDO</string>
+
+    <string name="priority_low">Low</string>
+    <string name="priority_medium">Medium</string>
+    <string name="priority_high">High</string>
+    <string name="priority_very_high">Very High</string>
+
+    <string name="status_to_apply">Didn\'t apply yet</string>
+    <string name="status_applied">Awaiting reply</string>
+    <string name="status_in_process">In process</string>
+    <string name="status_did_not_work_out">Didn\'t work out</string>
+    <string name="status_got_the_job">Got the job!</string>
+
+    <string name="error_screen_title">Sorry, something went wrong</string>
+    <string name="error_screen_msg">Please try again</string>
+
+    <string name="prompt_form_invalid">Please fill all the required fields</string>
+    <string name="prompt_offer_invalid">Please fill all the required fields in the offer section</string>
+    <string name="prompt_new_event_time_order_invalid">The new event start time must be less than the end time</string>
+    <string name="prompt_new_event_invalid">Please fill all the required fields in the new event section</string>
+    <string name="prompt_status_filter_invalid">Please select at least one status filter</string>
+    <string name="prompt_priority_filter_invalid">Please select at least one priority filter</string>
+    <string name="prompt_create_job_failed">Unable to create job</string>
+    <string name="prompt_update_job_failed">Unable to update job</string>
+    <string name="prompt_open_browser_failed">Please check the url</string>
+    <string name="prompt_open_maps_failed">Please check the address</string>
+    <string name="prompt_open_email_client_failed">Please check the email</string>
+    <string name="prompt_open_dialer_failed">Please check the phone number</string>
+    <string name="prompt_open_calendar_failed">There seems to be no calendar app installed in your device</string>
+
+    <string name="empty_jobs_screen_msg">No jobs to show for the applied filter</string>
+    <string name="empty_events_screen_msg">No events to show for the applied filter</string>
+    <string name="empty_offers_screen_msg">You have no offers from any of your jobs</string>
+
+    <string name="msg_job_deleted">Job Deleted</string>
+    <string name="msg_job_restored">Job Restored</string>
+
+    <string name="action_negative">No</string>
+    <string name="action_positive">Yes</string>
+
+    <string name="close_add_or_edit_job_screen_dialog_title">Close Screen?</string>
+    <string name="close_add_or_edit_job_screen_dialog_message">Are you sure you want to close the screen?</string>
+
+    <string name="content_description_timeline_close_btn">Button to delete an events entry from timeline</string>
+
+    <string-array name="priority_array">
+        <item>@string/priority_low</item>
+        <item>@string/priority_medium</item>
+        <item>@string/priority_high</item>
+        <item>@string/priority_very_high</item>
+    </string-array>
+
+    <string-array name="status_array">
+        <item>@string/status_to_apply</item>
+        <item>@string/status_applied</item>
+        <item>@string/status_in_process</item>
+        <item>@string/status_got_the_job</item>
+        <item>@string/status_did_not_work_out</item>
+    </string-array>
+</resources>

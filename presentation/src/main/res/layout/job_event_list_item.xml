@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground">
+
+    <ImageView
+        android:id="@+id/timelineView"
+        android:layout_width="@dimen/job_event_list_line_width"
+        android:layout_height="0dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/timeline_only"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/timelineBulletView"
+        app:layout_constraintStart_toStartOf="@+id/timelineBulletView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/timeline_mid" />
+
+    <ImageView
+        android:id="@+id/timelineBulletView"
+        android:layout_width="@dimen/job_event_list_bullet_size"
+        android:layout_height="@dimen/job_event_list_bullet_size"
+        android:layout_marginStart="@dimen/margin_xl"
+        android:src="@drawable/timeline_bullet"
+        android:importantForAccessibility="no"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/timeline_bullet" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_xl"
+        android:layout_marginTop="@dimen/margin_xl"
+        android:layout_marginEnd="@dimen/margin_xl"
+        android:textSize="@dimen/text_l"
+        app:layout_constraintBottom_toTopOf="@+id/notes"
+        app:layout_constraintEnd_toStartOf="@+id/closeButton"
+        app:layout_constraintStart_toEndOf="@+id/timelineBulletView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Title" />
+
+    <TextView
+        android:id="@+id/notes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_xl"
+        android:layout_marginEnd="@dimen/margin_xl"
+        app:layout_constraintBottom_toTopOf="@+id/startTime"
+        app:layout_constraintEnd_toStartOf="@+id/closeButton"
+        app:layout_constraintStart_toEndOf="@+id/timelineBulletView"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        tools:text="Notes about the event" />
+
+    <TextView
+        android:id="@+id/startTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_xl"
+        android:layout_marginTop="@dimen/margin_xs"
+        android:layout_marginEnd="@dimen/margin_xl"
+        android:textSize="@dimen/text_m"
+        app:layout_constraintBottom_toTopOf="@+id/endTime"
+        app:layout_constraintEnd_toStartOf="@+id/closeButton"
+        app:layout_constraintStart_toEndOf="@+id/timelineBulletView"
+        app:layout_constraintTop_toBottomOf="@+id/notes"
+        tools:text="Wednesday, September 12, 2012 4:00 PM" />
+
+    <TextView
+        android:id="@+id/endTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_xl"
+        android:layout_marginEnd="@dimen/margin_xl"
+        android:layout_marginBottom="@dimen/margin_xl"
+        android:textSize="@dimen/text_m"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/closeButton"
+        app:layout_constraintStart_toEndOf="@+id/timelineBulletView"
+        app:layout_constraintTop_toBottomOf="@+id/startTime"
+        tools:text="Wednesday, September 12, 2012 5:00 PM" />
+
+    <ImageButton
+        android:id="@+id/closeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_xl"
+        android:contentDescription="@string/content_description_timeline_close_btn"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_clear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

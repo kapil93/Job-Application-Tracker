@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_xs">4dp</dimen>
+    <dimen name="margin_s">8dp</dimen>
+    <dimen name="margin_m">12dp</dimen>
+    <dimen name="margin_l">16dp</dimen>
+    <dimen name="margin_xl">24dp</dimen>
+    <dimen name="margin_xxl">48dp</dimen>
+    <dimen name="margin_xxxl">96dp</dimen>
+
+    <dimen name="text_s">8sp</dimen>
+    <dimen name="text_m">12sp</dimen>
+    <dimen name="text_l">18sp</dimen>
+    <dimen name="text_xl">24sp</dimen>
+
+    <dimen name="job_event_list_line_width">2dp</dimen>
+    <dimen name="job_event_list_bullet_size">24dp</dimen>
+    <dimen name="sort_bar_height">56dp</dimen>
+    <dimen name="divider_stroke_width">0.5dp</dimen>
+</resources>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/eventsFragmentRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    tools:context=".events.EventsFragment">
+
+    <ToggleButton
+        android:id="@+id/filterBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/sort_bar_height"
+        android:background="@android:color/transparent"
+        android:checked="false"
+        android:elevation="0dp"
+        android:padding="@dimen/margin_l"
+        android:textAllCaps="false"
+        android:textColor="@color/sort_btn_color_selector"
+        android:textOff="@string/label_filter"
+        android:textOn="@string/label_filter"
+        app:layout_constraintEnd_toStartOf="@+id/groupByJobBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/groupByJobBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/sort_bar_height"
+        android:background="@android:color/transparent"
+        android:checked="false"
+        android:elevation="0dp"
+        android:padding="@dimen/margin_l"
+        android:textAllCaps="false"
+        android:textColor="@color/sort_btn_color_selector"
+        android:textOff="@string/label_group_by_job"
+        android:textOn="@string/label_group_by_job"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/dateSortBtn"
+        app:layout_constraintStart_toEndOf="@+id/filterBtn"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <ToggleButton
+        android:id="@+id/dateSortBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/sort_bar_height"
+        android:background="@android:color/transparent"
+        android:checked="false"
+        android:drawableEnd="@drawable/sort_btn_ic_selector"
+        android:elevation="0dp"
+        android:padding="@dimen/margin_l"
+        android:textAllCaps="false"
+        android:textColor="@color/sort_btn_color_selector"
+        android:textOff="@string/label_sort_date"
+        android:textOn="@string/label_sort_date"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/groupByJobBtn"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/sortBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="filterBtn, groupByJobBtn, dateSortBtn" />
+
+    <ScrollView
+        android:id="@+id/filterView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:visibility="gone"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sortBarrier"
+        app:layout_constraintVertical_bias="0"
+        tools:visibility="visible">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/filter_fragment_container"
+            android:name="com.kapil.presentation.jobs.jobfilter.JobFilterFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="JobFilterFragment" />
+
+    </ScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/eventGroupListView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filterView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/eventListView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filterView" />
+
+    <TextView
+        android:id="@+id/emptyListMsg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="?android:attr/colorBackground"
+        android:elevation="2dp"
+        android:gravity="center"
+        android:padding="@dimen/margin_xl"
+        android:text="@string/empty_events_screen_msg"
+        android:textSize="@dimen/text_xl"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filterView" />
+
+    <include
+        layout="@layout/error_view"
+        tools:visibility="gone" />
+
+    <include
+        layout="@layout/loading_view"
+        tools:visibility="gone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

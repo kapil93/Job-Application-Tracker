@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/jobFilterFragmentRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".jobs.jobfilter.JobFilterFragment">
+
+    <LinearLayout
+        android:id="@+id/statusChecklist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toStartOf="@id/priorityChecklist"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/labelStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_status" />
+
+        <CheckBox
+            android:id="@+id/statusToApplyCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/status_to_apply" />
+
+        <CheckBox
+            android:id="@+id/statusAppliedCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/status_applied" />
+
+        <CheckBox
+            android:id="@+id/statusInProcessCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/status_in_process" />
+
+        <CheckBox
+            android:id="@+id/statusGotTheJobCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/status_got_the_job" />
+
+        <CheckBox
+            android:id="@+id/statusDidNotWorkOutCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/status_did_not_work_out" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/priorityChecklist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/statusChecklist"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/labelPriority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_priority" />
+
+        <CheckBox
+            android:id="@+id/priorityLowCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/priority_low" />
+
+        <CheckBox
+            android:id="@+id/priorityMediumCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/priority_medium" />
+
+        <CheckBox
+            android:id="@+id/priorityHighCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/priority_high" />
+
+        <CheckBox
+            android:id="@+id/priorityVeryHighCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/priority_very_high" />
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/checklistBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="statusChecklist, priorityChecklist" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/companyKeywordView"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_xl"
+        android:layout_marginTop="@dimen/margin_xl"
+        android:layout_marginEnd="@dimen/margin_xl"
+        android:hint="@string/label_filter_company_keyword"
+        android:labelFor="@+id/companyKeywordEditText"
+        app:helperText="@string/label_filter_company"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checklistBarrier">
+
+        <AutoCompleteTextView
+            android:id="@+id/companyKeywordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:completionThreshold="1"
+            android:imeOptions="flagNoFullscreen"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/roleKeywordView"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_xl"
+        android:layout_marginTop="@dimen/margin_xl"
+        android:layout_marginEnd="@dimen/margin_xl"
+        android:hint="@string/label_filter_role_keyword"
+        android:labelFor="@+id/roleKeywordEditText"
+        app:helperText="@string/label_filter_role"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/companyKeywordView">
+
+        <AutoCompleteTextView
+            android:id="@+id/roleKeywordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:completionThreshold="1"
+            android:imeOptions="flagNoFullscreen"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/applyFilterBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_xl"
+        android:layout_marginBottom="@dimen/margin_xl"
+        android:background="?attr/selectableItemBackground"
+        android:drawableEnd="@drawable/ic_filter"
+        android:drawablePadding="@dimen/margin_l"
+        android:paddingStart="@dimen/margin_l"
+        android:paddingEnd="@dimen/margin_l"
+        android:text="@string/btn_text_apply"
+        android:textColor="@color/light_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/roleKeywordView" />
+
+    <include
+        layout="@layout/divider_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_xl"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/applyFilterBtn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

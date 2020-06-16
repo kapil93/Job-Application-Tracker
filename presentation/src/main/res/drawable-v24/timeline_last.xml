@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:gravity="center_horizontal">
+        <scale
+            android:level="1"
+            android:scaleHeight="50%"
+            android:scaleGravity="top">
+            <shape android:shape="rectangle">
+                <size android:width="@dimen/job_event_list_line_width" />
+                <solid android:color="@color/gray" />
+            </shape>
+        </scale>
+    </item>
+    <item android:gravity="center_vertical">
+        <shape android:shape="oval">
+            <size
+                android:width="@dimen/job_event_list_bullet_size"
+                android:height="@dimen/job_event_list_bullet_size" />
+            <solid android:color="@color/yellow" />
+        </shape>
+    </item>
+</layer-list>

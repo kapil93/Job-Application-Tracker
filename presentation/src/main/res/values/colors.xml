@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="green">#588100</color>
+    <color name="dark_green">#356700</color>
+    <color name="yellow">#FFC107</color>
+
+    <color name="black">#000000</color>
+    <color name="gray">#999999</color>
+    <color name="light_gray">#BBBBBB</color>
+    <color name="dark_gray">#333333</color>
+
+    <color name="red">#cc0000</color>
+
+    <color name="status_to_apply">@color/red</color>
+    <color name="status_applied">@color/gray</color>
+    <color name="status_in_process">@color/yellow</color>
+    <color name="status_got_the_job">@color/green</color>
+    <color name="status_did_not_work_out">@color/black</color>
+</resources>

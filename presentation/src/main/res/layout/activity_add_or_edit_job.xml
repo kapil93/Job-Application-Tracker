@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/addOrEditJobActivityRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:fitsSystemWindows="true"
+    tools:context=".jobs.addoredit.AddOrEditJobActivity">
+
+    <!-- To divert focus from edit texts in older api versions -->
+    <FrameLayout
+        android:layout_width="0px"
+        android:layout_height="0px"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        tools:ignore="UselessLeaf" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/role"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginTop="@dimen/margin_xl"
+                android:layout_marginEnd="@dimen/margin_l"
+                android:hint="@string/label_role"
+                app:helperText="@string/label_required"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="flagNoFullscreen"
+                    android:inputType="textCapWords" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/companyName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginTop="@dimen/margin_xl"
+                android:layout_marginEnd="@dimen/margin_l"
+                android:hint="@string/label_company_name"
+                app:helperText="@string/label_required"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/role">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="flagNoFullscreen"
+                    android:inputType="textCapWords" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/appliedThrough"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginTop="@dimen/margin_xl"
+                android:layout_marginEnd="@dimen/margin_l"
+                android:hint="@string/label_applied_through"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/companyName">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="flagNoFullscreen"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/jobNotes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginTop="@dimen/margin_xl"
+                android:layout_marginEnd="@dimen/margin_l"
+                android:hint="@string/label_job_notes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appliedThrough">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="flagNoFullscreen"
+                    android:inputType="textMultiLine|textCapSentences" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/status"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginTop="@dimen/margin_xl"
+                android:layout_marginEnd="@dimen/margin_s"
+                android:hint="@string/label_status"
+                app:endIconMode="dropdown_menu"
+                app:layout_constraintEnd_toStartOf="@+id/priority"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/jobNotes">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/priority"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_s"
+                android:layout_marginEnd="@dimen/margin_l"
+                android:hint="@string/label_priority"
+                app:endIconMode="dropdown_menu"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/status"
+                app:layout_constraintTop_toTopOf="@+id/status">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/offerDetailsGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="labelOffer, dateOfJoining, offerAmount, offerNotes"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/labelOffer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_xl"
+                android:layout_marginTop="@dimen/margin_xxl"
+                android:text="@string/label_offer_input_section"
+                android:textSize="@dimen/text_xl"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/status"
+                tools:visibility="visible" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dateOfJoining"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginEnd="@dimen/margin_l"
+                android:hint="@string/label_offer_doj"
+                app:helperText="@string/label_required"
+                app:layout_constraintEnd_toStartOf="@+id/offerAmount"
+                app:layout_constraintHorizontal_weight="0.70"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labelOffer">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:inputType="date"
+                    android:longClickable="false" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/offerAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginEnd="@dimen/margin_l"
+                android:hint="@string/label_offer_amount"
+                app:helperText="@string/label_required"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="0.30"
+                app:layout_constraintStart_toEndOf="@+id/dateOfJoining"
+                app:layout_constraintTop_toTopOf="@+id/dateOfJoining">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="flagNoFullscreen"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/offerNotes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginTop="@dimen/margin_xl"
+                android:layout_marginEnd="@dimen/margin_l"
+                android:hint="@string/label_offer_notes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dateOfJoining">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="flagNoFullscreen"
+                    android:inputType="textMultiLine|textCapSentences" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ToggleButton
+                android:id="@+id/companyDetailsToggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_xl"
+                android:layout_marginTop="@dimen/margin_xxl"
+                android:background="@android:color/transparent"
+                android:checked="false"
+                android:drawableStart="@drawable/ic_add_circle"
+                android:drawablePadding="@dimen/margin_s"
+                android:textAllCaps="false"
+                android:textColor="@color/sort_btn_color_selector"
+                android:textOff="@string/label_company_details_section"
+                android:textOn="@string/label_company_details_section"
+                android:textSize="@dimen/text_xl"
+                app:layout_constraintEnd_toStartOf="@+id/dummyCompanyAnimView"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/offerNotes" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/companyDetailsGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="dummyCompanyAnimView, companyWebsite, companyAddress, companyNotes"
+                tools:visibility="visible" />
+
+            <!-- This view is added just to animate companyDetailsToggle automagically when the
+            visibility of the companyDetailsGroup changes -->
+            <View
+                android:id="@+id/dummyCompanyAnimView"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                app:layout_constraintBottom_toBottomOf="@+id/companyDetailsToggle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/companyDetailsToggle"
+                app:layout_constraintTop_toTopOf="@+id/companyDetailsToggle" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/companyWebsite"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginEnd="@dimen/margin_l"
+                android:hint="@string/label_company_website"
+                app:endIconDrawable="@drawable/ic_browser"
+                app:endIconMode="custom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/companyDetailsToggle"
+                app:prefixText="https://">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="flagNoFullscreen"
+                    android:inputType="textUri" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/companyAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginTop="@dimen/margin_xl"
+                android:layout_marginEnd="@dimen/margin_l"
+                android:hint="@string/label_company_address"
+                app:endIconDrawable="@drawable/ic_map"
+                app:endIconMode="custom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/companyWebsite">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="flagNoFullscreen"
+                    android:inputType="textPostalAddress|textMultiLine|textCapWords" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/companyNotes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginTop="@dimen/margin_xl"
+                android:layout_marginEnd="@dimen/margin_l"
+                android:hint="@string/label_company_notes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/companyAddress">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="flagNoFullscreen"
+                    android:inputType="textMultiLine|textCapSentences" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ToggleButton
+                android:id="@+id/contactDetailsToggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_xl"
+                android:layout_marginTop="@dimen/margin_xxl"
+                android:background="@android:color/transparent"
+                android:checked="false"
+                android:drawableStart="@drawable/ic_add_circle"
+                android:drawablePadding="@dimen/margin_s"
+                android:textAllCaps="false"
+                android:textColor="@color/sort_btn_color_selector"
+                android:textOff="@string/label_contact_details_section"
+                android:textOn="@string/label_contact_details_section"
+                android:textSize="@dimen/text_xl"
+                app:layout_constraintEnd_toStartOf="@+id/dummyContactAnimView"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/companyNotes" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/contactDetailsGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="dummyContactAnimView, contactName, contactEmail, contactPhone"
+                tools:visibility="visible" />
+
+            <!-- This view is added just to animate contactDetailsToggle automagically when the
+            visibility of the contactDetailsGroup changes -->
+            <View
+                android:id="@+id/dummyContactAnimView"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                app:layout_constraintBottom_toBottomOf="@+id/contactDetailsToggle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/contactDetailsToggle"
+                app:layout_constraintTop_toTopOf="@+id/contactDetailsToggle" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/contactName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginEnd="@dimen/margin_l"
+                android:hint="@string/label_contact_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/contactDetailsToggle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="flagNoFullscreen"
+                    android:inputType="textPersonName|textCapWords" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/contactEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginTop="@dimen/margin_xl"
+                android:layout_marginEnd="@dimen/margin_l"
+                android:hint="@string/label_contact_email"
+                app:endIconDrawable="@drawable/ic_email"
+                app:endIconMode="custom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/contactName">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="flagNoFullscreen"
+                    android:inputType="textEmailAddress" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/contactPhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginTop="@dimen/margin_xl"
+                android:layout_marginEnd="@dimen/margin_l"
+                android:hint="@string/label_contact_phone"
+                app:endIconDrawable="@drawable/ic_call"
+                app:endIconMode="custom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/contactEmail">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="flagNoFullscreen"
+                    android:inputType="phone" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ToggleButton
+                android:id="@+id/newEventDetailsToggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_xl"
+                android:layout_marginTop="@dimen/margin_xxl"
+                android:background="@android:color/transparent"
+                android:checked="false"
+                android:drawableStart="@drawable/ic_add_circle"
+                android:drawablePadding="@dimen/margin_s"
+                android:textAllCaps="false"
+                android:textColor="@color/sort_btn_color_selector"
+                android:textOff="@string/label_event_input_section"
+                android:textOn="@string/label_event_input_section"
+                android:textSize="@dimen/text_xl"
+                app:layout_constraintEnd_toStartOf="@+id/dummyNewEventAnimView"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/contactPhone"
+                app:layout_goneMarginBottom="@dimen/margin_xxxl" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/newEventDetailsGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="dummyNewEventAnimView, addEventButton, newEventTitle, newEventStartTime, newEventEndTime, newEventNotes"
+                tools:visibility="visible" />
+
+            <!-- This view is added just to animate newEventDetailsToggle automagically when the
+            visibility of the newEventDetailsGroup changes -->
+            <View
+                android:id="@+id/dummyNewEventAnimView"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                app:layout_constraintBottom_toBottomOf="@+id/newEventDetailsToggle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/newEventDetailsToggle"
+                app:layout_constraintTop_toTopOf="@+id/newEventDetailsToggle" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/newEventTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginEnd="@dimen/margin_l"
+                android:hint="@string/label_event_title"
+                app:helperText="@string/label_required"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/newEventDetailsToggle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="flagNoFullscreen"
+                    android:inputType="textCapWords" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/newEventStartTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginTop="@dimen/margin_xl"
+                android:layout_marginEnd="@dimen/margin_l"
+                android:hint="@string/label_event_start_datetime"
+                app:helperText="@string/label_required"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/newEventTitle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:inputType="date"
+                    android:longClickable="false" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/newEventEndTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginTop="@dimen/margin_xl"
+                android:layout_marginEnd="@dimen/margin_l"
+                android:hint="@string/label_event_end_datetime"
+                app:endIconMode="clear_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/newEventStartTime">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:inputType="date"
+                    android:longClickable="false" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/newEventNotes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginTop="@dimen/margin_xl"
+                android:layout_marginEnd="@dimen/margin_l"
+                android:hint="@string/label_event_notes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/newEventEndTime"
+                app:layout_goneMarginBottom="@dimen/margin_xxxl">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="flagNoFullscreen"
+                    android:inputType="textMultiLine|textCapSentences" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/addEventButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_l"
+                android:background="?attr/selectableItemBackground"
+                android:drawableEnd="@drawable/ic_save"
+                android:drawablePadding="@dimen/margin_s"
+                android:paddingStart="@dimen/margin_l"
+                android:paddingEnd="@dimen/margin_l"
+                android:text="@string/btn_text_add_event"
+                android:textColor="@color/light_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/newEventNotes" />
+
+            <TextView
+                android:id="@+id/labelEventList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_xl"
+                android:layout_marginTop="@dimen/margin_xxl"
+                android:text="@string/label_event_list"
+                android:textSize="@dimen/text_xl"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addEventButton"
+                tools:visibility="visible" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/eventsListView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginEnd="@dimen/margin_l"
+                android:layout_marginBottom="@dimen/margin_xxxl"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labelEventList" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/margin_l"
+        android:src="@drawable/ic_check" />
+
+    <include
+        layout="@layout/error_view"
+        tools:visibility="gone" />
+
+    <include
+        layout="@layout/loading_view"
+        tools:visibility="gone" />
+
+</FrameLayout>

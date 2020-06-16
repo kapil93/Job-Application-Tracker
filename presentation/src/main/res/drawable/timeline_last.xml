@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bg_line"
+        android:gravity="center_horizontal">
+        <scale
+            android:scaleHeight="50%"
+            android:scaleGravity="top">
+            <shape android:shape="rectangle">
+                <size android:width="@dimen/job_event_list_line_width" />
+                <solid android:color="@color/gray" />
+            </shape>
+        </scale>
+    </item>
+</layer-list>
