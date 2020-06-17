@@ -28,8 +28,7 @@ val jobsModule = module {
     viewModel {
         JobsViewModel(
             observeJobListUseCase = get(),
-            loadJobUseCase = get(),
-            deleteJobUseCase = get(),
+            loadAndDeleteJobUseCase = get(),
             createJobUseCase = get(),
             mapper = get()
         )
@@ -61,6 +60,7 @@ val jobsModule = module {
     single { CreateJobUseCase(get()) }
     single { UpdateJobUseCase(get()) }
     single { DeleteJobUseCase(get()) }
+    single { LoadAndDeleteJobUseCase(get(), get()) }
 
     single { JobToJobListItemMapper() }
     single { JobFormToJobMapper() }

@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
-import com.kapil.domain.entity.Job
 import com.kapil.presentation.R
 import com.kapil.presentation.common.*
 import com.kapil.presentation.home.BottomNavFragment
@@ -49,7 +48,7 @@ class JobsFragment : BottomNavFragment(), LoadingView, ErrorView {
                 requireContext().resources.getDimension(R.dimen.margin_xxxl).toInt()
             )
         )
-        getItemSwipeDeleteHelper { viewModel.loadJobToDelete(it.itemId) }
+        getItemSwipeDeleteHelper { viewModel.deleteJob(it.itemId) }
             .attachToRecyclerView(jobsListView)
 
         fab.setOnClickListener { startActivity(Intent(context, AddOrEditJobActivity::class.java)) }
@@ -65,7 +64,12 @@ class JobsFragment : BottomNavFragment(), LoadingView, ErrorView {
         }
 
         viewModel.jobListViewEntity.observe(viewLifecycleOwner, Observer(::updateViewEntity))
-        viewModel.jobToDelete.observeShortLivedData(viewLifecycleOwner, ::updateJobToDelete)
+        viewModel.isJobSuccessfullyDeleted.observeShortLivedData(
+            viewLifecycleOwner, ::showJobDeletedMsg
+        )
+        viewModel.isJobSuccessfullyRestored.observeShortLivedData(
+            viewLifecycleOwner, ::showJobRestoredMsg
+        )
         viewModel.isLoading.observe(viewLifecycleOwner, Observer(::updateLoadingView))
         viewModel.isError.observe(viewLifecycleOwner, Observer {
             updateErrorView(it.first, it.second)
@@ -82,18 +86,16 @@ class JobsFragment : BottomNavFragment(), LoadingView, ErrorView {
         filterBtn.isSelected = !jobListViewEntity.jobFilterProperties.isDefault()
     }
 
-    /**
-     * Since this method contains code to trigger deletion of a resource and not just a UI update,
-     * unnecessary triggers MUST be avoided as it may lead to inconsistency in the database.
-     */
-    private fun updateJobToDelete(job: Job) {
-        viewModel.deleteJob(job.id)
-        Snackbar.make(jobsListView, R.string.msg_job_deleted, Snackbar.LENGTH_LONG)
-            .setAction(R.string.btn_text_undo) {
-                viewModel.restoreJob(job)
-                showMessage(R.string.msg_job_restored)
-            }
-            .show()
+    private fun showJobDeletedMsg(show: Boolean) {
+        if (show) {
+            Snackbar.make(jobsListView, R.string.msg_job_deleted, Snackbar.LENGTH_LONG)
+                .setAction(R.string.btn_text_undo) { viewModel.restoreRecentlyDeletedJob() }
+                .show()
+        } else showMessage(R.string.msg_job_delete_failed)
+    }
+
+    private fun showJobRestoredMsg(show: Boolean) {
+        showMessage(if (show) R.string.msg_job_restored else R.string.msg_job_restore_failed)
     }
 
     private fun onJobListItemClicked(jobListItem: JobListItem) {

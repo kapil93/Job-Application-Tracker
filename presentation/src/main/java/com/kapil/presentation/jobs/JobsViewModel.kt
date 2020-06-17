@@ -5,8 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.kapil.domain.entity.Job
 import com.kapil.domain.entity.JobFilterProperties
 import com.kapil.domain.jobs.CreateJobUseCase
-import com.kapil.domain.jobs.DeleteJobUseCase
-import com.kapil.domain.jobs.LoadJobUseCase
+import com.kapil.domain.jobs.LoadAndDeleteJobUseCase
 import com.kapil.domain.jobs.ObserveJobListUseCase
 import com.kapil.presentation.base.BaseViewModel
 import com.kapil.presentation.common.ShortLivedItem
@@ -18,17 +17,20 @@ import timber.log.Timber
 
 class JobsViewModel(
     private val observeJobListUseCase: ObserveJobListUseCase,
-    private val loadJobUseCase: LoadJobUseCase,
-    private val deleteJobUseCase: DeleteJobUseCase,
+    private val loadAndDeleteJobUseCase: LoadAndDeleteJobUseCase,
     private val createJobUseCase: CreateJobUseCase,
     private val mapper: JobToJobListItemMapper
 ) : BaseViewModel() {
 
     private val _jobListViewEntity = MutableLiveData<JobListViewEntity>()
-    private val _jobToDelete = MutableLiveData<ShortLivedItem<Job>>()
+    private val _isJobSuccessfullyDeleted = MutableLiveData<ShortLivedItem<Boolean>>()
+    private val _isJobSuccessfullyRestored = MutableLiveData<ShortLivedItem<Boolean>>()
 
     val jobListViewEntity: LiveData<JobListViewEntity> = _jobListViewEntity
-    val jobToDelete: LiveData<ShortLivedItem<Job>> = _jobToDelete
+    val isJobSuccessfullyDeleted: LiveData<ShortLivedItem<Boolean>> = _isJobSuccessfullyDeleted
+    val isJobSuccessfullyRestored: LiveData<ShortLivedItem<Boolean>> = _isJobSuccessfullyRestored
+
+    private var recentlyDeletedJob: Job? = null
 
     private lateinit var onFilterPropertiesChangedListener: (JobFilterProperties) -> Unit
 
@@ -67,43 +69,55 @@ class JobsViewModel(
     fun onFilterPropertiesChanged(jobFilterProperties: JobFilterProperties) =
         onFilterPropertiesChangedListener(jobFilterProperties)
 
-    fun loadJobToDelete(jobId: Long) {
-        disposable.add(
-            loadJobUseCase.execute(jobId)
-                .applySchedulers()
-                .subscribe({
-                    _jobToDelete.value = ShortLivedItem(it)
-                    Timber.d("Job $jobId successfully loaded for deletion")
-                }, {
-                    Timber.e(it, "Failed to load job $jobId for deletion")
-                })
-        )
-    }
+//    fun loadJobToDelete(jobId: Long) {
+//        disposable.add(
+//            loadJobUseCase.execute(jobId)
+//                .applySchedulers()
+//                .subscribe({
+//                    _jobToDelete.value = ShortLivedItem(it)
+//                    Timber.d("Job $jobId successfully loaded for deletion")
+//                }, {
+//                    Timber.e(it, "Failed to load job $jobId for deletion")
+//                })
+//        )
+//    }
 
     fun deleteJob(jobId: Long) {
         disposable.add(
-            deleteJobUseCase.execute(jobId)
+            loadAndDeleteJobUseCase.execute(jobId)
                 .applySchedulers()
                 .subscribe({
                     // Since the job list for the specified filter properties is already being
                     // observed, we do not have to update the job view entity here.
+                    recentlyDeletedJob = it
+                    _isJobSuccessfullyDeleted.value = ShortLivedItem(true)
                     Timber.d("Job $jobId successfully deleted")
                 }, {
+                    _isJobSuccessfullyDeleted.value = ShortLivedItem(false)
                     Timber.e(it, "Failed to delete job $jobId")
                 })
         )
     }
 
-    fun restoreJob(job: Job) {
+    fun restoreRecentlyDeletedJob() {
+        if (recentlyDeletedJob == null) {
+            _isJobSuccessfullyRestored.value = ShortLivedItem(false)
+            Timber.d("There is no job deleted recently")
+            return
+        }
         disposable.add(
-            createJobUseCase.execute(job)
+            createJobUseCase.execute(recentlyDeletedJob!!)
                 .applySchedulers()
+                // Just to ensure that the job is not created twice.
+                .doAfterTerminate { recentlyDeletedJob = null }
                 .subscribe({
                     // Since the job list for the specified filter properties is already being
                     // observed, we do not have to update the job view entity here.
-                    Timber.d("Job ${job.id} successfully restored")
+                    _isJobSuccessfullyRestored.value = ShortLivedItem(true)
+                    Timber.d("Job ${recentlyDeletedJob!!.id} successfully restored")
                 }, {
-                    Timber.e(it, "Failed to restore job ${job.id}")
+                    _isJobSuccessfullyRestored.value = ShortLivedItem(false)
+                    Timber.e(it, "Failed to restore job ${recentlyDeletedJob!!.id}")
                 })
         )
     }

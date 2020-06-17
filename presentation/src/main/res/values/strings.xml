@@ -79,8 +79,10 @@
     <string name="empty_events_screen_msg">No events to show for the applied filter</string>
     <string name="empty_offers_screen_msg">You have no offers from any of your jobs</string>
 
-    <string name="msg_job_deleted">Job Deleted</string>
-    <string name="msg_job_restored">Job Restored</string>
+    <string name="msg_job_deleted">Job Successfully Deleted</string>
+    <string name="msg_job_delete_failed">Failed to delete job</string>
+    <string name="msg_job_restored">Job Successfully Restored</string>
+    <string name="msg_job_restore_failed">Failed to restore job</string>
 
     <string name="action_negative">No</string>
     <string name="action_positive">Yes</string>

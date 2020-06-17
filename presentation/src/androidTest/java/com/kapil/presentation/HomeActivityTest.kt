@@ -49,7 +49,8 @@ class HomeActivityTest : KoinTest {
     private lateinit var jobFilterViewModel: JobFilterViewModel
 
     private lateinit var jobListLiveData: LiveData<JobListViewEntity>
-    private lateinit var jobToDeleteLiveData: LiveData<ShortLivedItem<Job>>
+    private lateinit var isJobDeletedLiveData: LiveData<ShortLivedItem<Boolean>>
+    private lateinit var isJobRestoredLiveData: LiveData<ShortLivedItem<Boolean>>
     private lateinit var isLoadingLiveData: LiveData<Boolean>
     private lateinit var isErrorLiveData: LiveData<Pair<Boolean, () -> Unit>>
     private lateinit var eventListLiveData: MutableLiveData<EventListViewEntity>
@@ -94,7 +95,8 @@ class HomeActivityTest : KoinTest {
         jobFilterViewModel = mockk()
 
         jobListLiveData = mockk()
-        jobToDeleteLiveData = mockk()
+        isJobDeletedLiveData = mockk()
+        isJobRestoredLiveData = mockk()
         isLoadingLiveData = mockk()
         isErrorLiveData = mockk()
         isOpenCalendarSuccessfulLiveData = mockk()
@@ -110,8 +112,10 @@ class HomeActivityTest : KoinTest {
         every { jobListLiveData.observe(any(), any()) } returns Unit
         every { jobsViewModel.jobListViewEntity } returns jobListLiveData
         every { jobListLiveData.observe(any(), any()) } returns Unit
-        every { jobsViewModel.jobToDelete } returns jobToDeleteLiveData
-        every { jobToDeleteLiveData.observe(any(), any()) } returns Unit
+        every { jobsViewModel.isJobSuccessfullyDeleted } returns isJobDeletedLiveData
+        every { isJobDeletedLiveData.observe(any(), any()) } returns Unit
+        every { jobsViewModel.isJobSuccessfullyRestored } returns isJobRestoredLiveData
+        every { isJobRestoredLiveData.observe(any(), any()) } returns Unit
         every { jobsViewModel.isLoading } returns isLoadingLiveData
         every { isLoadingLiveData.observe(any(), any()) } returns Unit
         every { jobsViewModel.isError } returns isErrorLiveData
