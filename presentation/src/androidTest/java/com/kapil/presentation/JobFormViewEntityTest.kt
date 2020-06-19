@@ -1,16 +1,22 @@
 package com.kapil.presentation
 
 import androidx.annotation.StringRes
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.kapil.domain.entity.Job
 import com.kapil.presentation.jobs.addoredit.JobForm
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import org.junit.runner.RunWith
 
 
+/**
+ * This test is run as an Android Test because SimpleDateFormat throws a ParseException otherwise.
+ */
+@RunWith(AndroidJUnit4::class)
 class JobFormViewEntityTest {
 
     @Test
-    fun `test job form validity checks`() {
+    fun testJobFormValidityChecks() {
         dummyJobFormAndPropertyList.forEach { pair ->
             val actualJobForm = pair.first
             val expectedJobFormProperties = pair.second

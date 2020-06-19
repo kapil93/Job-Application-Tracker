@@ -4,13 +4,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.kapil.presentation.R
 import com.kapil.presentation.common.getResIdFromPriority
-import com.kapil.presentation.common.getStatusColorResId
 import com.kapil.presentation.common.getResIdFromStatus
+import com.kapil.presentation.common.getStatusColorResId
 import kotlinx.android.synthetic.main.job_list_item.view.*
 
 class JobListAdapter : ListAdapter<JobListItem, JobListAdapter.JobViewHolder>(DIFF_CALLBACK) {
@@ -51,7 +52,9 @@ class JobListAdapter : ListAdapter<JobListItem, JobListAdapter.JobViewHolder>(DI
             location.text = item.address
             contact.text = item.contactName
             status.setText(item.status.getResIdFromStatus())
-            status.setTextColor(itemView.context.resources.getColor(item.status.getStatusColorResId()))
+            status.setTextColor(
+                ContextCompat.getColor(itemView.context, item.status.getStatusColorResId())
+            )
 
             itemView.setOnClickListener { onItemClickListener?.invoke(item) }
         }
