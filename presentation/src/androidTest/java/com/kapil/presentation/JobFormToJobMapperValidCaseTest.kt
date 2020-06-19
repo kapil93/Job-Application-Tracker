@@ -25,7 +25,7 @@ open class JobFormToJobMapperValidCaseTest {
     }
 
     @Test
-    fun `testMapperIfFormValid`() {
+    fun testMapperIfFormValid() {
         dummyValidJobFormAndJobList.map { mapper.apply(it.first) to it.second }.forEach { pair ->
             val actualJob = pair.first
             val expectedJob = pair.second
@@ -81,7 +81,7 @@ open class JobFormToJobMapperValidCaseTest {
             status = Job.Status.GOT_THE_JOB,
             offer = Offer(
                 amount = "$1000000",
-                dateOfJoining = Date(1592085600000),
+                dateOfJoining = Date(1592092800000),
                 notes = "Offer notes"
             ),
             appliedThrough = "LinkedIn",
@@ -234,7 +234,7 @@ open class JobFormToJobMapperValidCaseTest {
             status = Job.Status.GOT_THE_JOB,
             offer = Offer(
                 amount = "$1000000",
-                dateOfJoining = Date(1592085600000),
+                dateOfJoining = Date(1592092800000),
                 notes = "Offer notes"
             ),
             appliedThrough = "LinkedIn",
