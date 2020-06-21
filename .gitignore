@@ -19,6 +19,7 @@
 # generated files
 bin/
 gen/
+app/release/
 
 # Android Studio
 *.iml

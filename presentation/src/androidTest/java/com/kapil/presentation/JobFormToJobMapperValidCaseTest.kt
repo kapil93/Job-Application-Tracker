@@ -1,14 +1,20 @@
 package com.kapil.presentation
 
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.kapil.domain.entity.*
 import com.kapil.presentation.jobs.addoredit.JobForm
 import com.kapil.presentation.jobs.addoredit.JobFormToJobMapper
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
+import org.junit.runner.RunWith
 import java.util.*
 
 
+/**
+ * This test is run as an Android Test because SimpleDateFormat throws a ParseException otherwise.
+ */
+@RunWith(AndroidJUnit4::class)
 open class JobFormToJobMapperValidCaseTest {
 
     private lateinit var mapper: JobFormToJobMapper
@@ -19,7 +25,7 @@ open class JobFormToJobMapperValidCaseTest {
     }
 
     @Test
-    fun `test mapper if form valid`() {
+    fun testMapperIfFormValid() {
         dummyValidJobFormAndJobList.map { mapper.apply(it.first) to it.second }.forEach { pair ->
             val actualJob = pair.first
             val expectedJob = pair.second
@@ -75,7 +81,7 @@ open class JobFormToJobMapperValidCaseTest {
             status = Job.Status.GOT_THE_JOB,
             offer = Offer(
                 amount = "$1000000",
-                dateOfJoining = Date(1592085600000),
+                dateOfJoining = Date(1592092800000),
                 notes = "Offer notes"
             ),
             appliedThrough = "LinkedIn",
@@ -228,7 +234,7 @@ open class JobFormToJobMapperValidCaseTest {
             status = Job.Status.GOT_THE_JOB,
             offer = Offer(
                 amount = "$1000000",
-                dateOfJoining = Date(1592085600000),
+                dateOfJoining = Date(1592092800000),
                 notes = "Offer notes"
             ),
             appliedThrough = "LinkedIn",
