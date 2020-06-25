@@ -5,10 +5,10 @@ import android.content.Intent
 import android.net.Uri
 import android.provider.CalendarContract
 import com.kapil.domain.entity.Event
-import com.kapil.domain.openapp.OpenAppRepository
+import com.kapil.domain.openapp.ExternalAppLauncher
 import io.reactivex.rxjava3.core.Completable
 
-class OpenAppRepositoryImpl(private val context: Context) : OpenAppRepository {
+class ExternalAppLauncherImpl(private val context: Context) : ExternalAppLauncher {
 
     override fun openEmailClient(emailId: String): Completable = openAppUsingImplicitIntent(
         Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", emailId, null))

@@ -3,7 +3,7 @@ package com.kapil.domain.openapp
 import com.kapil.domain.entity.Event
 import io.reactivex.rxjava3.core.Completable
 
-interface OpenAppRepository {
+interface ExternalAppLauncher {
     fun openEmailClient(emailId: String): Completable
     fun openDialer(phoneNumber: String): Completable
     fun openMaps(address: String): Completable

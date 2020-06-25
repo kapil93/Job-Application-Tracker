@@ -2,6 +2,6 @@ package com.kapil.domain.openapp
 
 import io.reactivex.rxjava3.core.Completable
 
-class OpenEmailClientUseCase(private val openAppRepository: OpenAppRepository) {
-    fun execute(emailId: String): Completable = openAppRepository.openEmailClient(emailId)
+class OpenEmailClientUseCase(private val externalAppLauncher: ExternalAppLauncher) {
+    fun execute(emailId: String): Completable = externalAppLauncher.openEmailClient(emailId)
 }
